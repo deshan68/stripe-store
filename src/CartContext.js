@@ -4,7 +4,7 @@ import { getProductData } from "./productStore";
 export const CartContext = createContext({
   item: [],
   getProductQuantity: () => {},
-  addOneCartToCart: () => {},
+  addOneToCart: () => {},
   removeOneFromCart: () => {},
   deleteFromCart: () => {},
   getTotalCost: () => {},
