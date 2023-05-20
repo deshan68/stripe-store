@@ -1,0 +1,1 @@
+on parent folder -> npm install express cors stripe

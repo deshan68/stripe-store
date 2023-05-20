@@ -21,6 +21,26 @@ function NavbarComponents(props) {
     0
   );
 
+  const checkout = async () => {
+    await fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cart.item,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response) {
+          window.location.assign(response.url);
+        }
+      });
+  };
+
   return (
     <>
       <Navbar expand="sm">
@@ -46,7 +66,9 @@ function NavbarComponents(props) {
                 />
               ))}
               <h1>Total: {cart.getTotalCost().toFixed(2)} </h1>
-              <Button variant="success">Purchase items</Button>
+              <Button variant="success" onClick={checkout}>
+                Purchase items
+              </Button>
             </>
           ) : (
             <>
